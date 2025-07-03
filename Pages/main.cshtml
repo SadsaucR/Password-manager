@@ -1,0 +1,40 @@
+﻿@page
+@model PasswordsModel
+@{
+    ViewData["Title"] = "密碼管理";
+}
+
+<h1>name的密碼管理</h1>
+
+<form method="get" class="search-form">
+    <input type="text" name="search" placeholder="搜尋網站或帳號" />
+    <button type="submit">搜尋</button>
+</form>
+
+<p>
+    <a asp-page="/AddPassword">+ 新增密碼</a>
+</p>
+
+<table class="password-table">
+    <thead>
+        <tr>
+            <th>網站</th>
+            <th>帳號</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.passwordList)
+        {
+            <tr>
+                <td>@item.Site</td>
+                <td>@item.Username</td>
+                <td>
+                    <a asp-page="/ViewPassword" asp-route-id="@item.Id">查看</a>
+                    <a asp-page="/DeletePassword" asp-route-id="@item.Id">刪除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
