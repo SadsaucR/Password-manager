@@ -1,6 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Password_manager.Models;
-
+[Authorize]
 public class PasswordsModel : PageModel
 {
     public List<PasswordItem> passwordList { get; set; } = new();
