@@ -1,12 +1,10 @@
-﻿@page
-@model IndexModel
-@{
+﻿@{
+    Layout = "_Layout";
     ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
     <h1 class="display-4">您好，請先登入</h1>
-    <p>登入區塊(預計使用彈窗bootstrap modal)</p>
 </div>
 
 <!-- Bootstrap Modal 登入表單 -->
@@ -19,10 +17,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+@*                     @if (!string.IsNullOrEmpty(Model.ErrorMessage))
                     {
                         <div class="alert alert-danger">@Model.ErrorMessage</div>
-                    }
+                    } 
+*@
                     <div class="mb-3">
                         <label for="username" class="form-label">帳號</label>
                         <input type="text" class="form-control" id="username" name="Username" required />

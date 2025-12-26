@@ -1,6 +1,5 @@
-﻿@page
-@model PasswordsModel
-@{
+﻿@{
+    Layout = "_Layout";
     ViewData["Title"] = "密碼管理";
 }
 
@@ -24,7 +23,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.passwordList)
+@*         @foreach (var item in Model.passwordList)
         {
             <tr>
                 <td>@item.Site</td>
@@ -34,7 +33,7 @@
                     <a asp-page="/DeletePassword" asp-route-id="@item.Id">刪除</a>
                 </td>
             </tr>
-        }
+        } *@
     </tbody>
 </table>
 
