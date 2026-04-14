@@ -1,3 +1,6 @@
+using Password_manager.Services;
+using Password_manager.Services.Interface;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
@@ -5,13 +8,13 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
     serverOptions.ListenAnyIP(5255); // 允許外部連線
 });
 
-// Add services to the container.
-builder.Services.AddRazorPages();
-
+builder.Services.AddControllersWithViews();
+//登入驗證服務
+builder.Services.AddScoped<IAccountService,AccountService>();
 builder.Services.AddAuthentication("Cookies")
     .AddCookie("Cookies", options =>
     {
-        options.LoginPath = "/Index";
+        options.LoginPath = "/Home/Index";
     });
 
 var app = builder.Build();
