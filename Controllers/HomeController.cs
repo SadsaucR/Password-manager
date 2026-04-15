@@ -17,6 +17,8 @@ namespace Password_manager.Controllers
         //頁面宣告
         public IActionResult Index()
         {
+            if (User.Identity?.IsAuthenticated == true)
+                return RedirectToAction("Main");
             return View(new LoginVM());
         }
         [Authorize]
