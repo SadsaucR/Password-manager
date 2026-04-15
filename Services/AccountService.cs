@@ -2,6 +2,9 @@
 
 namespace Password_manager.Services
 {
+    /// <summary>
+    /// 帳戶相關業務
+    /// </summary>
     public class AccountService : IAccountService
     {
         private readonly IConfiguration _configuration;

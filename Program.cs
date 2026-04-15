@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Builder;
 using Password_manager.Services;
 using Password_manager.Services.Interface;
 
@@ -11,6 +12,9 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
 builder.Services.AddControllersWithViews();
 //登入驗證服務
 builder.Services.AddScoped<IAccountService,AccountService>();
+builder.Services.AddScoped<IDataService, DataService>();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();            
 builder.Services.AddAuthentication("Cookies")
     .AddCookie("Cookies", options =>
     {
@@ -18,11 +22,15 @@ builder.Services.AddAuthentication("Cookies")
     });
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
+}
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 app.UseStaticFiles();
 
@@ -36,5 +44,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
 );
+app.MapControllers();
+
 
 app.Run();

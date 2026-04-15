@@ -1,6 +1,6 @@
 ﻿namespace Password_manager.Models
 {
-    public class PasswordItem
+    public class DataItem
     {
         public string Id { get; set; } = Guid.NewGuid().ToString(); //唯一碼
         public string Site { get; set; } = "";                      //網站類型
